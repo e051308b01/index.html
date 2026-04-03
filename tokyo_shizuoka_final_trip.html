@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2bb5139309c9e4efa674dc72b04be8d9 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2bb5139309c9e4efa674dc72b04be8d9" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2bb5139309c9e4efa674dc72b04be8d9 = L.map(
+                "map_2bb5139309c9e4efa674dc72b04be8d9",
+                {
+                    center: [35.4, 139.2],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_8d4a8d7a99412a821f7126de89b9bb8f = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_8d4a8d7a99412a821f7126de89b9bb8f.addTo(map_2bb5139309c9e4efa674dc72b04be8d9);
+        
+    
+            var tile_layer_da0ae1d40560147141a18aca62aded28 = L.tileLayer(
+                "https://mt1.google.com/vt/lyrs=y\u0026x={x}\u0026y={y}\u0026z={z}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Google",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_da0ae1d40560147141a18aca62aded28.addTo(map_2bb5139309c9e4efa674dc72b04be8d9);
+        
+    
+
+            var geocoderOpts_geocoder_346f787a2c7be308dbc4d5dd37e7a180 = {
+  "collapsed": true,
+  "position": "topright",
+  "defaultMarkGeocode": true,
+  "zoom": 11,
+  "provider": "nominatim",
+  "providerOptions": {
+},
+};
+
+            // note: geocoder name should start with lowercase
+            var geocoderName_geocoder_346f787a2c7be308dbc4d5dd37e7a180 = geocoderOpts_geocoder_346f787a2c7be308dbc4d5dd37e7a180["provider"];
+
+            var customGeocoder_geocoder_346f787a2c7be308dbc4d5dd37e7a180 = L.Control.Geocoder[ geocoderName_geocoder_346f787a2c7be308dbc4d5dd37e7a180 ](
+                geocoderOpts_geocoder_346f787a2c7be308dbc4d5dd37e7a180['providerOptions']
+            );
+            geocoderOpts_geocoder_346f787a2c7be308dbc4d5dd37e7a180["geocoder"] = customGeocoder_geocoder_346f787a2c7be308dbc4d5dd37e7a180;
+
+            L.Control.geocoder(
+                geocoderOpts_geocoder_346f787a2c7be308dbc4d5dd37e7a180
+            ).on('markgeocode', function(e) {
+                var zoom = geocoderOpts_geocoder_346f787a2c7be308dbc4d5dd37e7a180['zoom'] || map_2bb5139309c9e4efa674dc72b04be8d9.getZoom();
+                map_2bb5139309c9e4efa674dc72b04be8d9.setView(e.geocode.center, zoom);
+            }).addTo(map_2bb5139309c9e4efa674dc72b04be8d9);
+
+        
+    
+            var locate_control_fcefd3dea8ad199a80b67b0f4be6af14 = L.control.locate(
+                {}
+            ).addTo(map_2bb5139309c9e4efa674dc72b04be8d9);
+            
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_2bb5139309c9e4efa674dc72b04be8d9);
+        
+    
+            var feature_group_fc6c69f12ce07a0d046fb7dacbe61eba = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_cb2124c3dcb099343ea3e92ee990061e = L.marker(
+                [35.6605, 139.7291],
+                {
+}
+            ).addTo(feature_group_fc6c69f12ce07a0d046fb7dacbe61eba);
+        
+    
+            var icon_3e27409c9006c458f5466880413a696a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "art-frame",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fae81efadbcc84ce71ea5b307ffcb4d2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_995a6fb723f95c8f1063f4cdb34f5fdd = $(`<div id="html_995a6fb723f95c8f1063f4cdb34f5fdd" style="width: 100.0%; height: 100.0%;">     <div style="width:220px; font-family: sans-serif;">         <b style="font-size:14px;">森美術館</b><br>         <span style="color: #d9534f; font-weight:bold;">Day 1建議</span><br>         <p style="font-size:12px; color: #555;">看大蜘蛛！交通：日比谷線「六本木站」1C出口直達。</p>         <a href="https://www.google.com/maps/search/?api=1&query=35.6605,139.7291" target="_blank" style="background-color:#4285F4; color:white; padding:8px; text-decoration:none; border-radius:4px; display:block; text-align:center;">開啟 Google 導航</a>     </div>     </div>`)[0];
+                popup_fae81efadbcc84ce71ea5b307ffcb4d2.setContent(html_995a6fb723f95c8f1063f4cdb34f5fdd);
+            
+        
+
+        marker_cb2124c3dcb099343ea3e92ee990061e.bindPopup(popup_fae81efadbcc84ce71ea5b307ffcb4d2)
+        ;
+
+        
+    
+    
+                marker_cb2124c3dcb099343ea3e92ee990061e.setIcon(icon_3e27409c9006c458f5466880413a696a);
+            
+    
+            var marker_91038fa04c36f8f9c80e08088e26def6 = L.marker(
+                [35.6496, 139.6997],
+                {
+}
+            ).addTo(feature_group_fc6c69f12ce07a0d046fb7dacbe61eba);
+        
+    
+            var icon_e88fe6abb9111ed9558718e53a48c22e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "book-open",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8d7a162c07ca777b5f785075ffe7c50d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5a95f1afbfe67edf49195c2df5d2c679 = $(`<div id="html_5a95f1afbfe67edf49195c2df5d2c679" style="width: 100.0%; height: 100.0%;">     <div style="width:220px; font-family: sans-serif;">         <b style="font-size:14px;">代官山 T-SITE</b><br>         <span style="color: #d9534f; font-weight:bold;">Day 1建議</span><br>         <p style="font-size:12px; color: #555;">最美書局。交通：東急東橫線「代官山站」步行5分鐘。</p>         <a href="https://www.google.com/maps/search/?api=1&query=35.6496,139.6997" target="_blank" style="background-color:#4285F4; color:white; padding:8px; text-decoration:none; border-radius:4px; display:block; text-align:center;">開啟 Google 導航</a>     </div>     </div>`)[0];
+                popup_8d7a162c07ca777b5f785075ffe7c50d.setContent(html_5a95f1afbfe67edf49195c2df5d2c679);
+            
+        
+
+        marker_91038fa04c36f8f9c80e08088e26def6.bindPopup(popup_8d7a162c07ca777b5f785075ffe7c50d)
+        ;
+
+        
+    
+    
+                marker_91038fa04c36f8f9c80e08088e26def6.setIcon(icon_e88fe6abb9111ed9558718e53a48c22e);
+            
+    
+            feature_group_fc6c69f12ce07a0d046fb7dacbe61eba.addTo(map_2bb5139309c9e4efa674dc72b04be8d9);
+        
+    
+            var feature_group_bc2e57a2e6dec4f10b17198ac3b48435 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_f93ce0d6830bd7f9b123276a8d3aa684 = L.marker(
+                [35.1032, 139.0782],
+                {
+}
+            ).addTo(feature_group_bc2e57a2e6dec4f10b17198ac3b48435);
+        
+    
+            var icon_2e5b4eaf6439e8c0671d51eb6caa927f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "white",
+  "icon": "train",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_16f118e180a8cc8e4eb3fa1e98e3d931 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2681eafefe815cdf4ecaf1b9951720cd = $(`<div id="html_2681eafefe815cdf4ecaf1b9951720cd" style="width: 100.0%; height: 100.0%;">     <div style="width:220px; font-family: sans-serif;">         <b style="font-size:14px;">熱海站</b><br>         <span style="color: #d9534f; font-weight:bold;">Day 2建議</span><br>         <p style="font-size:12px; color: #555;">交通：從東京站搭新幹線45分，或JR東海道線100分。抵達後啟動「3日周遊券」。</p>         <a href="https://www.google.com/maps/search/?api=1&query=35.1032,139.0782" target="_blank" style="background-color:#4285F4; color:white; padding:8px; text-decoration:none; border-radius:4px; display:block; text-align:center;">開啟 Google 導航</a>     </div>     </div>`)[0];
+                popup_16f118e180a8cc8e4eb3fa1e98e3d931.setContent(html_2681eafefe815cdf4ecaf1b9951720cd);
+            
+        
+
+        marker_f93ce0d6830bd7f9b123276a8d3aa684.bindPopup(popup_16f118e180a8cc8e4eb3fa1e98e3d931)
+        ;
+
+        
+    
+    
+                marker_f93ce0d6830bd7f9b123276a8d3aa684.setIcon(icon_2e5b4eaf6439e8c0671d51eb6caa927f);
+            
+    
+            var marker_0320f58f97458cb900425ae7fec355c3 = L.marker(
+                [35.1092, 139.0747],
+                {
+}
+            ).addTo(feature_group_bc2e57a2e6dec4f10b17198ac3b48435);
+        
+    
+            var icon_e67c77ae20b79f41afcb68899e183e92 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "art-frame",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_191f5047e3808985c5ab2a9f418077bf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a29c36b78d7441eaba53c496ea9476ed = $(`<div id="html_a29c36b78d7441eaba53c496ea9476ed" style="width: 100.0%; height: 100.0%;">     <div style="width:220px; font-family: sans-serif;">         <b style="font-size:14px;">MOA 美術館</b><br>         <span style="color: #d9534f; font-weight:bold;">Day 2建議</span><br>         <p style="font-size:12px; color: #555;">海景美術館。交通：熱海站8號公車站搭乘往MOA巴士(周遊券OK)。</p>         <a href="https://www.google.com/maps/search/?api=1&query=35.1092,139.0747" target="_blank" style="background-color:#4285F4; color:white; padding:8px; text-decoration:none; border-radius:4px; display:block; text-align:center;">開啟 Google 導航</a>     </div>     </div>`)[0];
+                popup_191f5047e3808985c5ab2a9f418077bf.setContent(html_a29c36b78d7441eaba53c496ea9476ed);
+            
+        
+
+        marker_0320f58f97458cb900425ae7fec355c3.bindPopup(popup_191f5047e3808985c5ab2a9f418077bf)
+        ;
+
+        
+    
+    
+                marker_0320f58f97458cb900425ae7fec355c3.setIcon(icon_e67c77ae20b79f41afcb68899e183e92);
+            
+    
+            var marker_34778d5d5a70fa2fd78aaa44abbdcbea = L.marker(
+                [35.0898, 139.0772],
+                {
+}
+            ).addTo(feature_group_bc2e57a2e6dec4f10b17198ac3b48435);
+        
+    
+            var icon_818c541b91204db59fee4d8cf79a2060 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cloud",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_37f56bb4e82af9ffeb8d3bfbb295332b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6b2c2558575d3e8036614c2641b76a88 = $(`<div id="html_6b2c2558575d3e8036614c2641b76a88" style="width: 100.0%; height: 100.0%;">     <div style="width:220px; font-family: sans-serif;">         <b style="font-size:14px;">熱海纜車</b><br>         <span style="color: #d9534f; font-weight:bold;">Day 2建議</span><br>         <p style="font-size:12px; color: #555;">交通：搭「湯～遊～巴士」至熱海港站下車。</p>         <a href="https://www.google.com/maps/search/?api=1&query=35.0898,139.0772" target="_blank" style="background-color:#4285F4; color:white; padding:8px; text-decoration:none; border-radius:4px; display:block; text-align:center;">開啟 Google 導航</a>     </div>     </div>`)[0];
+                popup_37f56bb4e82af9ffeb8d3bfbb295332b.setContent(html_6b2c2558575d3e8036614c2641b76a88);
+            
+        
+
+        marker_34778d5d5a70fa2fd78aaa44abbdcbea.bindPopup(popup_37f56bb4e82af9ffeb8d3bfbb295332b)
+        ;
+
+        
+    
+    
+                marker_34778d5d5a70fa2fd78aaa44abbdcbea.setIcon(icon_818c541b91204db59fee4d8cf79a2060);
+            
+    
+            feature_group_bc2e57a2e6dec4f10b17198ac3b48435.addTo(map_2bb5139309c9e4efa674dc72b04be8d9);
+        
+    
+            var feature_group_1853bf3e79a1fa7a39deb82b7c7a21ca = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_8964b41c6e44094567d9b2f12bff46f2 = L.marker(
+                [34.9765, 138.9328],
+                {
+}
+            ).addTo(feature_group_1853bf3e79a1fa7a39deb82b7c7a21ca);
+        
+    
+            var icon_931271a567b71f35242ffc5437ca05e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "place-of-worship",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_25e530facabd97e6d72c207f7c1c57a6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_436f89551c03f40a78d58156160013e0 = $(`<div id="html_436f89551c03f40a78d58156160013e0" style="width: 100.0%; height: 100.0%;">     <div style="width:220px; font-family: sans-serif;">         <b style="font-size:14px;">修善寺</b><br>         <span style="color: #d9534f; font-weight:bold;">Day 3建議</span><br>         <p style="font-size:12px; color: #555;">伊豆小京都。交通：三島站轉乘「伊豆箱根鐵道」至修善寺站(周遊券OK)。</p>         <a href="https://www.google.com/maps/search/?api=1&query=34.9765,138.9328" target="_blank" style="background-color:#4285F4; color:white; padding:8px; text-decoration:none; border-radius:4px; display:block; text-align:center;">開啟 Google 導航</a>     </div>     </div>`)[0];
+                popup_25e530facabd97e6d72c207f7c1c57a6.setContent(html_436f89551c03f40a78d58156160013e0);
+            
+        
+
+        marker_8964b41c6e44094567d9b2f12bff46f2.bindPopup(popup_25e530facabd97e6d72c207f7c1c57a6)
+        ;
+
+        
+    
+    
+                marker_8964b41c6e44094567d9b2f12bff46f2.setIcon(icon_931271a567b71f35242ffc5437ca05e6);
+            
+    
+            var marker_f4aea7adb62e6e8e4087e687bcfc871c = L.marker(
+                [35.0133, 138.9211],
+                {
+}
+            ).addTo(feature_group_1853bf3e79a1fa7a39deb82b7c7a21ca);
+        
+    
+            var icon_d9ddaf56fe7a43985a19896dd40d4e64 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "mountains",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ce3e67795af2a029a958811dae97529e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_68db9c2684cd4ce15c93866d02f034da = $(`<div id="html_68db9c2684cd4ce15c93866d02f034da" style="width: 100.0%; height: 100.0%;">     <div style="width:220px; font-family: sans-serif;">         <b style="font-size:14px;">伊豆全景公園</b><br>         <span style="color: #d9534f; font-weight:bold;">Day 3建議</span><br>         <p style="font-size:12px; color: #555;">碧露台絕景。交通：伊豆長岡站轉乘巴士(周遊券OK)。</p>         <a href="https://www.google.com/maps/search/?api=1&query=35.0133,138.9211" target="_blank" style="background-color:#4285F4; color:white; padding:8px; text-decoration:none; border-radius:4px; display:block; text-align:center;">開啟 Google 導航</a>     </div>     </div>`)[0];
+                popup_ce3e67795af2a029a958811dae97529e.setContent(html_68db9c2684cd4ce15c93866d02f034da);
+            
+        
+
+        marker_f4aea7adb62e6e8e4087e687bcfc871c.bindPopup(popup_ce3e67795af2a029a958811dae97529e)
+        ;
+
+        
+    
+    
+                marker_f4aea7adb62e6e8e4087e687bcfc871c.setIcon(icon_d9ddaf56fe7a43985a19896dd40d4e64);
+            
+    
+            feature_group_1853bf3e79a1fa7a39deb82b7c7a21ca.addTo(map_2bb5139309c9e4efa674dc72b04be8d9);
+        
+    
+            var feature_group_ff6b78e990879800739a7ff5edfadcdb = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_acedce7300618d7e9b47bfd5bd80fe80 = L.marker(
+                [35.0069, 138.5203],
+                {
+}
+            ).addTo(feature_group_ff6b78e990879800739a7ff5edfadcdb);
+        
+    
+            var icon_235cd258a5eb5d0253b7f521d8124697 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "camera",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_198544f6cb491e4ffc7bbbd5412ecb20 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_870a888833cafa9f94d52a77517b781a = $(`<div id="html_870a888833cafa9f94d52a77517b781a" style="width: 100.0%; height: 100.0%;">     <div style="width:220px; font-family: sans-serif;">         <b style="font-size:14px;">三保松原</b><br>         <span style="color: #d9534f; font-weight:bold;">Day 4建議</span><br>         <p style="font-size:12px; color: #555;">富士山景。交通：清水站搭乘「三保線」巴士(周遊券OK)。</p>         <a href="https://www.google.com/maps/search/?api=1&query=35.0069,138.5203" target="_blank" style="background-color:#4285F4; color:white; padding:8px; text-decoration:none; border-radius:4px; display:block; text-align:center;">開啟 Google 導航</a>     </div>     </div>`)[0];
+                popup_198544f6cb491e4ffc7bbbd5412ecb20.setContent(html_870a888833cafa9f94d52a77517b781a);
+            
+        
+
+        marker_acedce7300618d7e9b47bfd5bd80fe80.bindPopup(popup_198544f6cb491e4ffc7bbbd5412ecb20)
+        ;
+
+        
+    
+    
+                marker_acedce7300618d7e9b47bfd5bd80fe80.setIcon(icon_235cd258a5eb5d0253b7f521d8124697);
+            
+    
+            var marker_e32d895209ea77ea14cedf67325bde4d = L.marker(
+                [34.9734, 138.4725],
+                {
+}
+            ).addTo(feature_group_ff6b78e990879800739a7ff5edfadcdb);
+        
+    
+            var icon_062ab4261c188d2799682c35a2a5ee2d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "city",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b2e3ae0194f7d292fc8592017038e466 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1e6a852ee95f31aa1cd2dc5a95cacd8d = $(`<div id="html_1e6a852ee95f31aa1cd2dc5a95cacd8d" style="width: 100.0%; height: 100.0%;">     <div style="width:220px; font-family: sans-serif;">         <b style="font-size:14px;">日本平夢陽台</b><br>         <span style="color: #d9534f; font-weight:bold;">Day 4建議</span><br>         <p style="font-size:12px; color: #555;">隈研吾設計。交通：清水站或靜岡站搭乘「日本平線」巴士(周遊券OK)。</p>         <a href="https://www.google.com/maps/search/?api=1&query=34.9734,138.4725" target="_blank" style="background-color:#4285F4; color:white; padding:8px; text-decoration:none; border-radius:4px; display:block; text-align:center;">開啟 Google 導航</a>     </div>     </div>`)[0];
+                popup_b2e3ae0194f7d292fc8592017038e466.setContent(html_1e6a852ee95f31aa1cd2dc5a95cacd8d);
+            
+        
+
+        marker_e32d895209ea77ea14cedf67325bde4d.bindPopup(popup_b2e3ae0194f7d292fc8592017038e466)
+        ;
+
+        
+    
+    
+                marker_e32d895209ea77ea14cedf67325bde4d.setIcon(icon_062ab4261c188d2799682c35a2a5ee2d);
+            
+    
+            var marker_8847ef66198f1e568515241b88426f69 = L.marker(
+                [35.0115, 138.492],
+                {
+}
+            ).addTo(feature_group_ff6b78e990879800739a7ff5edfadcdb);
+        
+    
+            var icon_3f7e4579aeadf0e3a6b5589902bc23bf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "ship",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5eab495967c273007e561f7dba3a18bb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2ec2e7fb72cf7f9e996b18900300475b = $(`<div id="html_2ec2e7fb72cf7f9e996b18900300475b" style="width: 100.0%; height: 100.0%;">     <div style="width:220px; font-family: sans-serif;">         <b style="font-size:14px;">清水港 (駿河灣渡輪)</b><br>         <span style="color: #d9534f; font-weight:bold;">Day 4建議</span><br>         <p style="font-size:12px; color: #555;">浪漫重點！交通：清水站有免費接駁車。持周遊券免費搭乘。</p>         <a href="https://www.google.com/maps/search/?api=1&query=35.0115,138.492" target="_blank" style="background-color:#4285F4; color:white; padding:8px; text-decoration:none; border-radius:4px; display:block; text-align:center;">開啟 Google 導航</a>     </div>     </div>`)[0];
+                popup_5eab495967c273007e561f7dba3a18bb.setContent(html_2ec2e7fb72cf7f9e996b18900300475b);
+            
+        
+
+        marker_8847ef66198f1e568515241b88426f69.bindPopup(popup_5eab495967c273007e561f7dba3a18bb)
+        ;
+
+        
+    
+    
+                marker_8847ef66198f1e568515241b88426f69.setIcon(icon_3f7e4579aeadf0e3a6b5589902bc23bf);
+            
+    
+            var poly_line_f82d49236046722adb31383c91ab88c0 = L.polyline(
+                [[35.0115, 138.492], [34.8722, 138.7565]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": "10", "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(feature_group_ff6b78e990879800739a7ff5edfadcdb);
+        
+    
+            poly_line_f82d49236046722adb31383c91ab88c0.bindTooltip(
+                `<div>
+                     駿河灣渡輪(周遊券免費)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_ff6b78e990879800739a7ff5edfadcdb.addTo(map_2bb5139309c9e4efa674dc72b04be8d9);
+        
+    
+            var feature_group_5039ae5c665397c77d04487149fd82e6 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            feature_group_5039ae5c665397c77d04487149fd82e6.addTo(map_2bb5139309c9e4efa674dc72b04be8d9);
+        
+    
+            var layer_control_ea5a7ed259edb4c59d036a705eef4993_layers = {
+                base_layers : {
+                    "\u7cbe\u7f8e\u5f69\u8272\u5730\u5716" : tile_layer_8d4a8d7a99412a821f7126de89b9bb8f,
+                    "Google \u885b\u661f\u6df7\u5408\u5716" : tile_layer_da0ae1d40560147141a18aca62aded28,
+                },
+                overlays :  {
+                    "Day 1 \u884c\u7a0b" : feature_group_fc6c69f12ce07a0d046fb7dacbe61eba,
+                    "Day 2 \u884c\u7a0b" : feature_group_bc2e57a2e6dec4f10b17198ac3b48435,
+                    "Day 3 \u884c\u7a0b" : feature_group_1853bf3e79a1fa7a39deb82b7c7a21ca,
+                    "Day 4 \u884c\u7a0b" : feature_group_ff6b78e990879800739a7ff5edfadcdb,
+                    "Day 5 \u884c\u7a0b" : feature_group_5039ae5c665397c77d04487149fd82e6,
+                },
+            };
+            let layer_control_ea5a7ed259edb4c59d036a705eef4993 = L.control.layers(
+                layer_control_ea5a7ed259edb4c59d036a705eef4993_layers.base_layers,
+                layer_control_ea5a7ed259edb4c59d036a705eef4993_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_2bb5139309c9e4efa674dc72b04be8d9);
+
+        
+</script>
+</html>
